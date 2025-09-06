@@ -1,69 +1,126 @@
-# React + TypeScript + Vite
+# ReactJS-CoderHouse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto evolutivo para el curso de React JS de CoderHouse - Construcción de un E-commerce
 
-Currently, two official plugins are available:
+## 📋 Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto es una aplicación de e-commerce desarrollada con React que se construye de manera incremental a lo largo del curso de React JS de CoderHouse. Cada entrega representa un hito en el aprendizaje de conceptos fundamentales de React.
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18** - Framework principal
+- **Vite** - Build tool y servidor de desarrollo
+- **JavaScript (JSX)** - Lenguaje de programación
+- **CSS** - Estilos personalizados
+- **npm** - Gestor de paquetes
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Estructura del Proyecto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/          # Componentes reutilizables
+│   ├── NavBar.jsx      # Barra de navegación
+│   ├── CartWidget.jsx  # Widget del carrito
+│   └── ItemListContainer.jsx # Contenedor de productos
+├── App.jsx             # Componente principal
+├── App.css             # Estilos principales
+├── main.jsx            # Punto de entrada
+└── index.css           # Estilos globales
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Instalación y Configuración
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerrequisitos
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (versión 16 o superior)
+- npm o yarn
+- Git
+
+### Instalación
+
+1. **Clona el repositorio:**
+
+   ```bash
+   git clone https://github.com/careb36/ReactJS-CoderHouse.git
+   cd ReactJS-CoderHouse
+   ```
+
+2. **Instala las dependencias:**
+
+   ```bash
+   npm install
+   ```
+
+## ▶️ Cómo Ejecutar el Proyecto
+
+### Modo Desarrollo
+
+Para ejecutar el proyecto en modo desarrollo con hot-reload:
+
+```bash
+npm run dev
 ```
+
+Esto iniciará el servidor de desarrollo en `http://localhost:5173` (o el puerto disponible siguiente).
+
+### Build para Producción
+
+Para crear una versión optimizada para producción:
+
+```bash
+npm run build
+```
+
+### Vista Previa del Build
+
+Para previsualizar la versión de producción localmente:
+
+```bash
+npm run preview
+```
+
+## 📚 Entregas del Curso
+
+### ✅ Entrega 1: Crea tu Landing
+
+- Componentes básicos: NavBar, CartWidget, ItemListContainer
+- Uso de props para personalización
+- Estructura de componentes modular
+- Rama: `CreaTuLanding1Careb`
+
+## 🎯 Características Implementadas
+
+- **Barra de Navegación**: Logo, enlaces de navegación y widget del carrito
+- **Componentes Modulares**: Arquitectura basada en componentes reutilizables
+- **Props**: Comunicación entre componentes padre-hijo
+- **Responsive Design**: Adaptable a diferentes tamaños de pantalla
+- **Hot Reload**: Desarrollo eficiente con recarga automática
+
+## 📖 Uso
+
+1. Ejecuta el proyecto con `npm run dev`
+2. Abre tu navegador en `http://localhost:5173`
+3. Navega por la aplicación usando la barra de navegación
+4. El widget del carrito muestra el contador de productos
+
+## 🤝 Contribución
+
+Este es un proyecto educativo. Para contribuir:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es parte del curso de React JS de CoderHouse.
+
+## 👨‍💻 Autor
+
+**careb36** - Proyecto del curso React JS CoderHouse
+
+---
+
+## Última actualización: Entrega 1 - Crea tu Landing
