@@ -7,6 +7,7 @@
 
 .App {
   text-align: left;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -16,13 +17,44 @@
   padding: 1rem 2rem;
   background-color: #282c34;
   color: white;
-  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo {
+  background: linear-gradient(135deg, #8B4513, #D2691E);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.3);
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(139, 69, 19, 0.5);
 }
 
 .navbar-brand h1 {
   margin: 0;
   font-size: 1.5rem;
+  white-space: nowrap;
+  font-weight: 600;
 }
 
 .navbar-links {
@@ -30,25 +62,40 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  flex: 1;
+  margin-left: 2rem;
 }
 
 .navbar-links li {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .navbar-links a {
   color: white;
   text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .navbar-links a:hover {
-  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
 }
 
 .cart-widget {
   display: flex;
   align-items: center;
   font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cart-widget:hover {
+  transform: scale(1.05);
 }
 
 .cart-icon {
@@ -59,18 +106,345 @@
   background-color: #61dafb;
   color: #282c34;
   border-radius: 50%;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   font-size: 0.8rem;
   font-weight: bold;
+  min-width: 1.2rem;
+  text-align: center;
 }
 
 .item-list-container {
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .item-list-container h2 {
   color: #282c34;
   margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.item-list-container p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #282c34;
+  color: white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  padding: 3rem 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section h3 {
+  color: #D2691E;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.footer-section h4 {
+  color: #D2691E;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-section p {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.certifications {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.cert {
+  font-size: 0.9rem;
+  color: #90EE90;
+  font-weight: 500;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-section ul li a:hover {
+  color: #D2691E;
+}
+
+.contact-info {
+  margin-bottom: 1.5rem;
+}
+
+.contact-info strong {
+  color: white;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.social-links a:hover {
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  background-color: #1a1a1a;
+  border-top: 1px solid #444;
+}
+
+.footer-bottom-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom-content p {
+  margin: 0;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.legal-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.legal-links a {
+  color: #999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+  color: #D2691E;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .navbar-brand {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+    padding: 0.4rem 0.7rem;
+  }
+  
+  .navbar-brand h1 {
+    font-size: 1.3rem;
+  }
+  
+  .navbar-links {
+    justify-content: center;
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .navbar-links li {
+    margin: 0 0.3rem;
+  }
+  
+  .navbar-links a {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .cart-widget {
+    font-size: 1.1rem;
+  }
+  
+  .item-list-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .item-list-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .item-list-container p {
+    font-size: 1rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 1rem 1.5rem;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .footer-section h4 {
+    font-size: 1rem;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .legal-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.8rem;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .navbar-brand h1 {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0;
+  }
+  
+  .navbar-links li {
+    margin: 0;
+  }
+  
+  .navbar-links a {
+    padding: 0.5rem 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .cart-widget {
+    font-size: 1rem;
+  }
+  
+  .item-list-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .item-list-container h2 {
+    font-size: 1.3rem;
+  }
+  
+  .item-list-container p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  
+  .certifications {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-bottom {
+    padding: 1rem;
+  }
+  
+  .footer-bottom-content {
+    padding: 1rem;
+  }
+  
+  .legal-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.5rem;
+  }
+  
+  .navbar-brand h1 {
+    font-size: 1.1rem;
+  }
+  
+  .cart-count {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+  
+  .item-list-container h2 {
+    font-size: 1.2rem;
+  }
 }
