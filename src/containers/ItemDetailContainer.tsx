@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import type { Product } from '../types';
-import { getProductById } from '../data/mockData';
+import { getProductById } from '../services/firebase';
 import ItemDetail from '../components/ItemDetail';
 
 const ItemDetailContainer: React.FC = () => {

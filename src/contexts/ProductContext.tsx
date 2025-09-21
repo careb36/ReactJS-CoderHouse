@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Product, Category } from '../types';
-import { getProducts, getCategories } from '../services/firebase';
+import { getProducts, getCategories, initializeFirestoreData } from '../services/firebase';
+import { testFirebaseConnection } from '../firebase';
 
 // Product state interface
 interface ProductState {
@@ -41,6 +42,10 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
+      // Test Firebase connection first
+      const connectionTest = await testFirebaseConnection();
+      console.log('🔥 Firebase connection test result:', connectionTest);
+
       const [products, categories] = await Promise.all([
         getProducts(),
         getCategories()
@@ -53,7 +58,31 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({ child
         error: null,
       });
     } catch (error) {
-      console.error('Error loading Firebase data, falling back to mockData:', error);
+      console.error('Error loading Firebase data, attempting to initialize database:', error);
+
+      try {
+        // Try to initialize Firestore with sample data
+        const initResult = await initializeFirestoreData();
+        console.log('🔥 Database initialization result:', initResult);
+
+        if (initResult.success) {
+          // Try to load data again after initialization
+          const [products, categories] = await Promise.all([
+            getProducts(),
+            getCategories()
+          ]);
+
+          setState({
+            products,
+            categories,
+            loading: false,
+            error: null,
+          });
+          return;
+        }
+      } catch (initError) {
+        console.error('Error initializing database:', initError);
+      }
 
       // Fallback to mockData when Firebase fails
       const mockProducts = [

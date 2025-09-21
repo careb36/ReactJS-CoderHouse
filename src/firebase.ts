@@ -21,3 +21,24 @@ export const db = getFirestore(app);
 
 // Export Firebase app for use in other services
 export default app;
+
+// Test Firebase connection
+export const testFirebaseConnection = async () => {
+  try {
+    console.log('🔥 Testing Firebase connection...');
+    console.log('🔥 Firebase config:', {
+      projectId: firebaseConfig.projectId,
+      authDomain: firebaseConfig.authDomain
+    });
+
+    // Try to access Firestore
+    const db = getFirestore(app);
+    console.log('🔥 Firestore instance created:', db);
+
+    return { success: true, message: 'Firebase connection successful' };
+  } catch (error) {
+    console.error('🔥 Firebase connection error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return { success: false, message: errorMessage, error };
+  }
+};
