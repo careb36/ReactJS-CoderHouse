@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import type { Product } from '../types';
-import { getProducts, getProductsByCategory } from '../data/mockData';
+import { useProducts } from '../contexts';
 import ItemList from '../components/ItemList';
 
 interface ItemListContainerProps {
@@ -10,34 +9,13 @@ interface ItemListContainerProps {
 
 const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
   const { categoryId } = useParams<{ categoryId?: string }>();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { state } = useProducts();
+  const { products, categories, loading, error } = state;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        let fetchedProducts: Product[];
-        if (categoryId) {
-          fetchedProducts = await getProductsByCategory(categoryId);
-        } else {
-          fetchedProducts = await getProducts();
-        }
-
-        setProducts(fetchedProducts);
-      } catch (err) {
-        setError('Error al cargar los productos. Por favor, intenta nuevamente.');
-        console.error('Error fetching products:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [categoryId]);
+  // Filter products by category if categoryId is provided
+  const filteredProducts = categoryId
+    ? products.filter(product => product.category === categoryId)
+    : products;
 
   if (loading) {
     return (
@@ -67,7 +45,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
   return (
     <div className="item-list-container">
       <h2>{greeting}</h2>
-      <ItemList products={products} />
+      <ItemList products={filteredProducts} />
     </div>
   );
 };

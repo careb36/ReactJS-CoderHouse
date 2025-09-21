@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import ItemListContainer from './containers/ItemListContainer';
 import Footer from './components/Footer';
+import Cart from './components/Cart';
+import { CartProvider, ProductProvider } from './contexts';
 import './App.css';
 
 // Lazy load the ItemDetailContainer for optimization
@@ -19,45 +21,55 @@ const NotFound: React.FC = () => (
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <NavBar />
-        <main className="main-content">
-          <Suspense fallback={
-            <div className="loading">
-              <p>🔄 Cargando...</p>
-            </div>
-          }>
-            <Routes>
-              {/* Home route - full catalog */}
-              <Route
-                path="/"
-                element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda en línea!" />}
-              />
+    <ProductProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <div className="App">
+            <NavBar />
+            <main className="main-content">
+              <Suspense fallback={
+                <div className="loading">
+                  <p>🔄 Cargando...</p>
+                </div>
+              }>
+                <Routes>
+                  {/* Home route - full catalog */}
+                  <Route
+                    path="/"
+                    element={<ItemListContainer greeting="¡Bienvenido a nuestra tienda en línea!" />}
+                  />
 
-              {/* Category route with dynamic segment */}
-              <Route
-                path="/category/:categoryId"
-                element={<ItemListContainer greeting="Catálogo por categoría" />}
-              />
+                  {/* Category route with dynamic segment */}
+                  <Route
+                    path="/category/:categoryId"
+                    element={<ItemListContainer greeting="Catálogo por categoría" />}
+                  />
 
-              {/* Item detail route */}
-              <Route
-                path="/item/:id"
-                element={<ItemDetailContainer />}
-              />
+                  {/* Item detail route */}
+                  <Route
+                    path="/item/:id"
+                    element={<ItemDetailContainer />}
+                  />
 
-              {/* 404 wildcard route */}
-              <Route
-                path="*"
-                element={<NotFound />}
-              />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+                  {/* Cart route */}
+                  <Route
+                    path="/cart"
+                    element={<Cart />}
+                  />
+
+                  {/* 404 wildcard route */}
+                  <Route
+                    path="*"
+                    element={<NotFound />}
+                  />
+                </Routes>
+              </Suspense>
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </CartProvider>
+    </ProductProvider>
   );
 }
 

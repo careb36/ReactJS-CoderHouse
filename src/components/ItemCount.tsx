@@ -1,58 +1,102 @@
 import React, { useState } from 'react';
+import { useCart } from '../contexts';
+import type { Product } from '../types';
 
 interface ItemCountProps {
-  stock: number;
-  initial: number;
+  product: Product;
+  initial?: number;
   onAdd?: (quantity: number) => void;
 }
 
-const ItemCount: React.FC<ItemCountProps> = ({ stock, initial, onAdd }) => {
-  const [count, setCount] = useState(initial);
+const ItemCount: React.FC<ItemCountProps> = ({
+  product,
+  initial = 1,
+  onAdd
+}) => {
+  const [quantity, setQuantity] = useState(initial);
+  const { addItem, getItemQuantity } = useCart();
 
-  const increment = () => {
-    if (count < stock) {
-      setCount(count + 1);
+  const currentCartQuantity = getItemQuantity(product.id);
+  const availableStock = product.stock - currentCartQuantity;
+
+  const handleIncrement = () => {
+    if (quantity < availableStock) {
+      setQuantity(prev => prev + 1);
     }
   };
 
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(prev => prev - 1);
     }
   };
 
-  const handleAdd = () => {
+  const handleAddToCart = () => {
+    for (let i = 0; i < quantity; i++) {
+      addItem(product);
+    }
+
     if (onAdd) {
-      onAdd(count);
+      onAdd(quantity);
     }
+
+    // Reset quantity after adding to cart
+    setQuantity(1);
+  };
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('es-AR', {
+      style: 'currency',
+      currency: 'ARS'
+    }).format(price);
   };
 
   return (
     <div className="item-count">
-      <div className="count-controls">
+      <div className="item-count-controls">
         <button
           type="button"
-          onClick={decrement}
-          disabled={count <= 1}
           className="count-btn"
+          onClick={handleDecrement}
+          disabled={quantity <= 1}
+          aria-label="Disminuir cantidad"
         >
           -
         </button>
-        <span className="count-display">{count}</span>
+
+        <span className="count-display" aria-label={`Cantidad: ${quantity}`}>
+          {quantity}
+        </span>
+
         <button
           type="button"
-          onClick={increment}
-          disabled={count >= stock}
           className="count-btn"
+          onClick={handleIncrement}
+          disabled={quantity >= availableStock}
+          aria-label="Aumentar cantidad"
         >
           +
         </button>
       </div>
+
+      <div className="item-count-info">
+        <p className="stock-info">
+          {availableStock > 0
+            ? `Stock disponible: ${availableStock}`
+            : 'Sin stock disponible'
+          }
+        </p>
+
+        <p className="total-price">
+          Total: {formatPrice(product.price * quantity)}
+        </p>
+      </div>
+
       <button
         type="button"
-        onClick={handleAdd}
-        disabled={stock === 0}
         className="add-to-cart-btn"
+        onClick={handleAddToCart}
+        disabled={availableStock <= 0 || quantity > availableStock}
       >
         Agregar al carrito
       </button>
