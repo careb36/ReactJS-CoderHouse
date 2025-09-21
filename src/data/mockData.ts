@@ -1,6 +1,7 @@
 import type { Product, Category } from '../types';
 
-// Mock categories
+// Datos mock de categorías para simular la base de datos
+// En una aplicación real, estos datos vendrían de Firebase o una API
 export const categories: Category[] = [
   {
     id: 'cafes-premium',
@@ -19,7 +20,8 @@ export const categories: Category[] = [
   }
 ];
 
-// Mock products
+// Datos mock de productos para simular la base de datos
+// Cada producto tiene toda la información necesaria: id, nombre, descripción, precio, imagen, categoría y stock
 export const products: Product[] = [
   {
     id: 1,
@@ -95,27 +97,28 @@ export const products: Product[] = [
   }
 ];
 
-// Simulated API functions with async behavior
+// Funciones simuladas de API con comportamiento async
+// Estas funciones simulan llamadas a una API real con delays para mostrar loading states
 export const getProducts = async (): Promise<Product[]> => {
-  // Simulate network delay
+  // Simulo delay de red para que se vea el loading
   await new Promise(resolve => setTimeout(resolve, 1000));
   return products;
 };
 
 export const getProductById = async (id: number): Promise<Product | undefined> => {
-  // Simulate network delay
+  // Simulo delay de red más corto para obtener un producto específico
   await new Promise(resolve => setTimeout(resolve, 800));
   return products.find(product => product.id === id);
 };
 
 export const getProductsByCategory = async (categoryId: string): Promise<Product[]> => {
-  // Simulate network delay
+  // Simulo delay de red más largo para filtrar productos por categoría
   await new Promise(resolve => setTimeout(resolve, 1200));
   return products.filter(product => product.category === categoryId);
 };
 
 export const getCategories = async (): Promise<Category[]> => {
-  // Simulate network delay
+  // Simulo delay de red más corto para obtener las categorías
   await new Promise(resolve => setTimeout(resolve, 500));
   return categories;
 };
