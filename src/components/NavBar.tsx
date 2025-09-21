@@ -3,6 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // Importo el componente CartWidget que va dentro del navbar
 import CartWidget from './CartWidget';
+// Importo el icono de café desde Tabler Icons
+import { IconCoffee } from '@tabler/icons-react';
 
 // Creo el componente NavBar usando TypeScript (React.FC significa React Function Component)
 const NavBar: React.FC = () => {
@@ -11,8 +13,10 @@ const NavBar: React.FC = () => {
     <nav className="navbar">
       {/* Sección izquierda: logo y nombre de la marca */}
       <div className="navbar-brand">
-        {/* Icono de café como logo - elegí el emoji porque es simple y funcional */}
-        <div className="logo">☕</div>
+        {/* Icono de café como logo usando Tabler Icons - más profesional que emoji */}
+        <div className="logo">
+          <IconCoffee size={32} stroke={2} />
+        </div>
         {/* Nombre de mi tienda de café */}
         <NavLink to="/" className="brand-link">
           <h1>Caro Coffee</h1>

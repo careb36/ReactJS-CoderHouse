@@ -4,6 +4,8 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './containers/ItemListContainer';
 import Footer from './components/Footer';
 import './App.css';
+// Importo el icono de loading desde Tabler Icons
+import { IconLoader } from '@tabler/icons-react';
 
 // Lazy load the ItemDetailContainer for optimization
 const ItemDetailContainer = lazy(() => import('./containers/ItemDetailContainer'));
@@ -25,7 +27,7 @@ function App() {
         <main className="main-content">
           <Suspense fallback={
             <div className="loading">
-              <p>🔄 Cargando...</p>
+              <p><IconLoader size={24} className="spinning" /> Cargando...</p>
             </div>
           }>
             <Routes>
@@ -68,7 +70,7 @@ export const AppRoutes: React.FC = () => (
     <main className="main-content">
       <Suspense fallback={
         <div className="loading">
-          <p>🔄 Cargando...</p>
+          <p><IconLoader size={24} className="spinning" /> Cargando...</p>
         </div>
       }>
         <Routes>

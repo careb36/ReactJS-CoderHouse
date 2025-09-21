@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import type { Product } from '../types';
 import { getProducts, getProductsByCategory } from '../data/mockData';
 import ItemList from '../components/ItemList';
+// Importo el icono de loading desde Tabler Icons
+import { IconLoader } from '@tabler/icons-react';
 
 // Defino las props que recibe este componente contenedor
 interface ItemListContainerProps {
@@ -64,7 +66,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
       <div className="item-list-container">
         <h2>{greeting}</h2>
         <div className="loading">
-          <p>🔄 Cargando productos...</p>
+          <p><IconLoader size={20} className="spinning" /> Cargando productos...</p>
         </div>
       </div>
     );

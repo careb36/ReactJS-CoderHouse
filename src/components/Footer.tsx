@@ -1,4 +1,6 @@
 import React from 'react';
+// Importo los iconos desde Tabler Icons para las certificaciones y redes sociales
+import { IconLeaf, IconHeartHandshake, IconMail, IconPhone, IconClock, IconBrandInstagram, IconBrandFacebook, IconBrandWhatsapp } from '@tabler/icons-react';
 
 // Componente Footer que muestra la información de la empresa y enlaces útiles
 // Es la parte inferior de la página con información de contacto y políticas
@@ -11,10 +13,10 @@ const Footer: React.FC = () => {
         <div className="footer-section">
           <h3>Caro Coffee</h3>
           <p>Importadores y tostadores de café de especialidad desde 2025. Comprometidos con la calidad y el comercio justo.</p>
-          {/* Certificaciones de la empresa */}
+          {/* Certificaciones de la empresa usando Tabler Icons */}
           <div className="certifications">
-            <span className="cert">🌱 Orgánico</span>
-            <span className="cert">🤝 Comercio Justo</span>
+            <span className="cert"><IconLeaf size={16} /> Orgánico</span>
+            <span className="cert"><IconHeartHandshake size={16} /> Comercio Justo</span>
           </div>
         </div>
 
@@ -45,15 +47,15 @@ const Footer: React.FC = () => {
           <h4>Contacto</h4>
           <div className="contact-info">
             <p><strong>Atención al Cliente</strong></p>
-            <p>📧 hola@carocoffee.com</p>
-            <p>📱 +54 11 2345-6789</p>
-            <p>⏰ Lun-Vie 9:00-18:00</p>
+            <p><IconMail size={16} /> hola@carocoffee.com</p>
+            <p><IconPhone size={16} /> +54 11 2345-6789</p>
+            <p><IconClock size={16} /> Lun-Vie 9:00-18:00</p>
           </div>
-          {/* Enlaces a redes sociales con aria-label para accesibilidad */}
+          {/* Enlaces a redes sociales usando Tabler Icons con aria-label para accesibilidad */}
           <div className="social-links">
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="Facebook">�</a>
-            <a href="#" aria-label="WhatsApp">💬</a>
+            <a href="#" aria-label="Instagram"><IconBrandInstagram size={20} /></a>
+            <a href="#" aria-label="Facebook"><IconBrandFacebook size={20} /></a>
+            <a href="#" aria-label="WhatsApp"><IconBrandWhatsapp size={20} /></a>
           </div>
         </div>
       </div>

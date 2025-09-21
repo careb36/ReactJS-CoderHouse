@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import type { Product } from '../types';
 import { getProductById } from '../data/mockData';
 import ItemDetail from '../components/ItemDetail';
+// Importo el icono de loading desde Tabler Icons
+import { IconLoader } from '@tabler/icons-react';
 
 // Este componente contenedor maneja la lógica para mostrar el detalle de un producto específico
 // Obtiene el ID del producto de la URL y lo busca en los datos
@@ -63,7 +65,7 @@ const ItemDetailContainer: React.FC = () => {
     return (
       <div className="item-detail-container">
         <div className="loading">
-          <p>🔄 Cargando producto...</p>
+          <p><IconLoader size={20} className="spinning" /> Cargando producto...</p>
         </div>
       </div>
     );
