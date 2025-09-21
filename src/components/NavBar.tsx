@@ -1,5 +1,6 @@
 // Importo React para poder usar JSX y los componentes
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 // Importo el componente CartWidget que va dentro del navbar
 import CartWidget from './CartWidget';
 
@@ -13,19 +14,52 @@ const NavBar: React.FC = () => {
         {/* Icono de café como logo - elegí el emoji porque es simple y funcional */}
         <div className="logo">☕</div>
         {/* Nombre de mi tienda de café */}
-        <h1>Caro Coffee</h1>
+        <NavLink to="/" className="brand-link">
+          <h1>Caro Coffee</h1>
+        </NavLink>
       </div>
-      
+
       {/* Navegación principal - uso una lista para que sea semánticamente correcta */}
       <ul className="navbar-links">
-        {/* Enlaces principales de mi tienda - por ahora usan # pero después los conectaré */}
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#cafes">Cafés Premium</a></li>
-        <li><a href="#equipos">Equipos</a></li>
-        <li><a href="#suscripciones">Suscripciones</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
+        {/* Enlaces principales de mi tienda usando NavLink para routing */}
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => isActive ? 'active' : ''}
+            aria-current="page"
+          >
+            Inicio
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/category/cafes-premium"
+            className={({ isActive }) => isActive ? 'active' : ''}
+            aria-current="page"
+          >
+            Cafés Premium
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/category/equipos"
+            className={({ isActive }) => isActive ? 'active' : ''}
+            aria-current="page"
+          >
+            Equipos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/category/suscripciones"
+            className={({ isActive }) => isActive ? 'active' : ''}
+            aria-current="page"
+          >
+            Suscripciones
+          </NavLink>
+        </li>
       </ul>
-      
+
       {/* Componente del carrito de compras - lo incluyo acá como pidió la consigna */}
       <CartWidget />
     </nav>
