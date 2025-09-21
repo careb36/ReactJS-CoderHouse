@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { vi } from 'vitest'
+import { vi, describe, test, expect } from 'vitest'
 import ItemList from './components/ItemList'
 import { products } from './data/mockData'
 

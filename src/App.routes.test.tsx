@@ -1,6 +1,6 @@
 import { render, screen, act } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { vi } from 'vitest'
+import { vi, describe, test, expect } from 'vitest'
 import { AppRoutes } from './App'
 
 // Mock the lazy loaded component

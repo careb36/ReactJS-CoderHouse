@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
+import { describe, test, expect } from 'vitest'
 import NavBar from './components/NavBar'
 
 describe('NavBar NavLink aria-current', () => {
