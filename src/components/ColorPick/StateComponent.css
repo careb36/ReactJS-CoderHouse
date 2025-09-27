@@ -1,0 +1,24 @@
+.box-container {
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.21);
+}
+
+.color-preview {
+  margin-left: 10px;
+  border-radius: 50%;
+  border: solid thin #555;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+.button-container {
+  font-size: 0.75em;
+}
+
+.button {
+  margin-right: 10px;
+}
