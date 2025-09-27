@@ -1,4 +1,4 @@
-import products from './products'
+import products from './cafe-products'
 
 function getMockAPIData(){
     const promiseProducts = new Promise( (resolve) => {
