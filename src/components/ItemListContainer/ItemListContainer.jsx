@@ -1,58 +1,45 @@
 import Item from '../Item/Item';
-import getMockAPIData, { getProductsByCateg } from '../../data/mockAPI';
-import { useState, useEffect } from 'react';
+import { getProducts, getProductByCategory  } from '../../firebase/api';
+
+import { useEffect, useState } from 'react';
+import './ItemListContainer.css'
 import { useParams } from 'react-router';
-import './ItemListContainer.css';
-
-export default function ItemListContainer( props ){
+function ItemListContainer( props ){  
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true)
-  const { categParam } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { categParam, categoryId } = useParams();
+  const category = categParam ?? categoryId;
 
-  useEffect( () => {
-    setIsLoading(true)
-    
-    if (categParam){
-      getProductsByCateg(categParam)
-      .then( productsByCateg => setProducts(productsByCateg))
-      .catch( error => alert(error))
-      .finally( () => setIsLoading(false))
-    }
-    else {    
-      getMockAPIData()
-      .then( (productList) => {
-          console.log("Promesa terminada")
-          setProducts(productList);
-      })
-      .catch( (error) => {
-          console.log("Error solicitando los datos", error);
-          alert("Algo salió mal buscando los productos")
-      } )
-      .finally( () => { 
-          console.log("Esto se ejecuta siempre")
-          setIsLoading(false)
-      })
-    }     
-     
-  }, [ categParam ])
-
-
+  useEffect( () =>{
+    setLoading(true);
+    setError(null);
+    const promesaDatos = category ? getProductByCategory(category) : getProducts();
+    promesaDatos
+      .then( (respuesta) => setProducts(respuesta))
+      .catch( (e) => setError(e.message || 'Error cargando productos'))
+      .finally(() => setLoading(false));
+  }, [category])
+  
   return (
-    <div className="item-list-container" >
-        <h2>{props.greeting}</h2>
-        { isLoading 
-          ? <p className="item-list-container__loading">Cargando...</p> 
-          : ""
-        }
-        <div>
-        <h4>Nuestros productos</h4>   
-        <div  className="item-list">
-        {
-          products.map(item =>  <Item key={item.id} {...item} /> )
-        }     
-        </div>
+    <section className="item-list-container">
+      <h2>{props.greeting}</h2>
+      <div>
+        { loading && <p className="item-list-container__loading">Cargando productos...</p> }
+        { error && <p role="alert">{error}</p> }
+        { !loading && !error && products.length === 0 && <p>No hay productos disponibles</p> }
+
+        { !loading && !error && products.length > 0 && (
+          <div>
+            <h4>Nuestros productos</h4>   
+            <div className="item-list">
+              { products.map(item =>  <Item {...item} key={item.id}  /> )}
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </section>
   )
 }
 
+export default ItemListContainer;

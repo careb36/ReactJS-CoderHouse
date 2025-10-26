@@ -1,25 +1,60 @@
+import { BrowserRouter, Route, Routes } from 'react-router'
 import './App.css'
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import NavBar from './components/NavBar/NavBar';
-import { BrowserRouter, Routes, Route } from 'react-router';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import NavBar from './components/NavBar/NavBar'
+import { CartContextProvider } from './context/cartContext'
+import CartContainer from './components/CartContainer/CartContainer'
+import { CurrencyContextProvider } from './context/currencyContext'
 
-// 1. BrowserRouter como Comp Padre
-// 2. Definir el area donde vamos a navegar con <Routes>
-// 3. Crear rutas con <Route>: definiendo el path (url) y el contenido
-export default function App() {
+function App() {    
   return (
-    <BrowserRouter>
-        <NavBar />
-
-        <Routes>
-          <Route path="/" element={<ItemListContainer greeting="Bienvenidos!"/>}/>
-          <Route path="/category/:categParam" element={ <ItemListContainer />} />
-          <Route path="/detalle/:idParam" element={ <ItemDetailContainer/>} />
-          <Route path="*"  element={ <h1>404: Página no encontrada</h1>} />
-        </Routes>
-
-    </BrowserRouter>)
+    <CurrencyContextProvider>
+      <CartContextProvider>      
+        <BrowserRouter>    
+        <main className="container">
+          <NavBar/>     
+          <Routes>
+            <Route 
+              path="/" 
+              element={<ItemListContainer greeting="Bienvenidos a la tienda"/>} 
+              />
+            {/* Rutas existentes */}
+            <Route 
+              path="/category/:categParam"
+              element={<ItemListContainer greeting="Categorías de productos"/>}
+              />
+            <Route
+            path="/detail/:idParam"
+            element={<ItemDetailContainer/>}
+            />
+            {/* Alias requeridos */}
+            <Route 
+              path="/category/:categoryId"
+              element={<ItemListContainer greeting="Categorías de productos"/>}
+            />
+            <Route 
+              path="/item/:id"
+              element={<ItemDetailContainer/>}
+            />
+            <Route 
+              path="/cart"
+              element={<CartContainer/>}
+            />
+            <Route 
+              path="/checkout"
+              element={<CartContainer/>}
+            />
+            <Route
+              path="*"
+              element={<h1>Oops! No encontramos está página</h1>}
+              />
+          </Routes>
+          </main>
+        </BrowserRouter>
+      </CartContextProvider>
+    </CurrencyContextProvider>
+  )
 }
 
-// layout
+export default App
