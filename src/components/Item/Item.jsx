@@ -1,28 +1,56 @@
-import { Link } from 'react-router';
-import StateComponent from '../ColorPick/StateComponent';
-import './Item.css'
+import { useState } from "react";
+import './Item.css';
+import { Link } from "react-router";
+import { useCurrency } from '../../context/currencyContext'
 
+function Item( props ) {
+  const [state, setState] = useState("No agregado al carrito aún")
+  const { format } = useCurrency()
 
-function Item( {id, title, imgURL, price} ){
+ /*  useEffect(
+    () =>{      
+        console.log("Obteniendo datos de la Base de Datos/API...🗂️")
+    }, 
+    []
+  )
+ 
+  useEffect(() => {
+    const botonDOM = document.getElementById("item-DOM")
+    console.log(botonDOM)
+  }, [])
+   */
+
+  function agregarAlCarrito(){
+    alert("Agregaste correctamente al carrito!");   
+    setState(`Item agregado al carrito a la hora: ${ new Date().toUTCString()}` )
+  }
   
-  return ( 
+  return (
     <div className="item-card">
-      <h2 className="item-card-title"> {title} </h2>
-      <img 
+      <h3 className="item-card-title">{props.title}</h3>
+       <img 
         className="item-card-img"
-        height="300"
-        src={imgURL}
-        alt={title}
+        height="250"
+        src={props.imgURL}
+        alt={props.title}
       /> 
-      <h3 className="item-card-price">Precio: $ {price}</h3>
-      <StateComponent/>
-      <div style={{ textAlign: "center"}}>
-        <Link to={`/detalle/${id}` }>
-          <button>Ir a ve detalle</button>
-        </Link>
+      <h3 className="item-card-price">Precio: {format(props.price)}</h3>      
+      <hr/>
+      <p className="item-card-content">{props.description}</p>
+      <div className="item-card-buttons">
         
+      <Link to={`/item/${props.id}`}>
+        <button>
+          Ver Detalle
+        </button>
+      </Link>
+      <button id="item-DOM" onClick={ agregarAlCarrito } >
+        Agregar al carrito
+      </button>
       </div>
-      
+      <br/>
+      <small className="item-card-footer">{state}</small>
+
     </div>
   )
 }

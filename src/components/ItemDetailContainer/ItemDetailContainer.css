@@ -1,0 +1,37 @@
+.item-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-detail-title {
+  margin-bottom: 1rem;
+}
+
+.item-detail-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-detail-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.item-detail-info {
+  flex: 1;
+}
+
+.item-detail-description {
+  margin-bottom: 1rem;
+}
+
+.item-detail-price {
+  margin-bottom: 0.5rem;
+}
+
+.item-detail button {
+  margin-top: 0.5rem;
+}

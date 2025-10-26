@@ -10,14 +10,14 @@
         font-weight: bold;
       }
       .item-list {
+        justify-content: center;        
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
-        
+        gap: 24px;
+        margin-top: 12px;
       }
       .item-list > * {
-        background-color: var(--b-bg-2);
+        background-color: rgba(255, 255, 255, 0.1);
         border-radius: 0.25rem;
         padding: 1rem;
       }

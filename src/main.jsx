@@ -1,6 +1,10 @@
 import { createRoot } from 'react-dom/client'
+
 import App from './App.jsx'
 import './index.css'
+import { StrictMode } from 'react';
 
-createRoot(document.getElementById('root'))
-  .render( <App /> )
+const raiz = document.getElementById('root');
+
+createRoot(raiz).render(<App/>)
+
