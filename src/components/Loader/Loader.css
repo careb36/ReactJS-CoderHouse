@@ -1,0 +1,19 @@
+.loader{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.5rem 0.75rem;
+}
+.loader__spinner{
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid var(--b-line);
+  border-top-color: var(--b-link);
+  animation: spin 0.9s linear infinite;
+}
+.loader__text{
+  color: var(--b-txt);
+  font-size: 0.95rem;
+}
+@keyframes spin{ to { transform: rotate(360deg) } }

@@ -8,7 +8,12 @@
   --b-link: #bf616a;
   --b-btn-bg: #242933;
   --b-btn-txt: #fff;
-  --b-focus: #88c0d0
+  --b-focus: #88c0d0;
+  /* Accent brand color (coffee tone) */
+  --b-accent: #d46c11;
+  --b-accent-600: #bf5f0f;
+  /* CSS Color Module Level 4 syntax */
+  --b-accent-rgb: 212 108 17;
 }
 
 *,

@@ -1,23 +1,25 @@
-// * Estado de componentes
 import { useState } from "react";
 
-export default function ButtonAddToCart(  ){
-  //let statusInCart = "No agregaste este item al carrito."
-  let [statusInCart, setStatusInCart] = useState("No agregaste este item al carrito.")
+/**
+ * ButtonAddToCart - Legacy demo component showing React state management.
+ * Note: This component is not used in the current cart implementation.
+ * The actual cart functionality is handled by CartContext.
+ * 
+ * @deprecated Use Item component with CartContext instead
+ */
+export default function ButtonAddToCart(){
+  const [statusInCart, setStatusInCart] = useState("No agregaste este item al carrito.")
   
   function handleClick(){
     alert("Gracias por agregarme al carrito")
-    // MAL 👇
-    //statusInCart = "Item agregado al carrito!🙂" 
     setStatusInCart("Item agregado al carrito!🙂")
   }
 
   return (
     <div className="button-cart">
-      {/* Pasamos como event handle SOLO EL NOMBRE de la funcion */}
-      <button onClick={ handleClick } > Agregar al carrito</button>
+      <button onClick={handleClick}>Agregar al carrito</button>
       <br/>
-      <small> {statusInCart} </small>
+      <small>{statusInCart}</small>
     </div>
   )
 }

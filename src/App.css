@@ -1,4 +1,10 @@
 .container {
   margin: 0 auto;
   padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: 480px){
+  .container { padding: 1rem; }
 }

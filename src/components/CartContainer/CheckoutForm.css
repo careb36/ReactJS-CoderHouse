@@ -1,0 +1,10 @@
+/* Estilos del formulario de checkout */
+.checkout-form{ display:flex; flex-direction:column; gap:12px }
+.checkout-form__grid{ display:grid; grid-template-columns: 1fr; gap:10px }
+.checkout-form label{ display:flex; flex-direction:column; gap:6px }
+.checkout-form input{ background: var(--b-bg-1); color: var(--b-txt); border:1px solid var(--b-line); border-radius:6px; padding:8px }
+.checkout-form input:focus-visible{ outline:2px solid var(--b-focus); outline-offset:2px }
+.field-error{ color:#ffb4b4 }
+.checkout-form__actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:4px }
+.checkout-form button{ background: var(--b-btn-bg); color: var(--b-btn-txt); border:1px solid var(--b-line); border-radius:6px; padding:6px 10px }
+@media (min-width:640px){ .checkout-form__grid{ grid-template-columns: 1fr 1fr } }

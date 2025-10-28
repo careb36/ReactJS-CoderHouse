@@ -1,0 +1,23 @@
+/* Layout general del carrito */
+.cart{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.cart__header{ display:flex; justify-content: space-between; align-items:center; gap:8px }
+.cart__buttons{ display:flex; gap:8px; flex-wrap:wrap }
+.cart__items{ display:grid; gap:12px }
+.cart-item{ display:flex; justify-content: space-between; gap:12px; padding:10px; border:1px solid var(--b-line); border-radius:8px; background: var(--b-bg2, rgba(255,255,255,.03)) }
+.cart-item__info{ display:flex; gap:12px; align-items:flex-start }
+.cart-item__thumb{ width:70px; height:70px; object-fit:cover; border-radius:8px }
+.cart-item__meta{ opacity:.8 }
+.cart-item__qty{ display:inline-flex; align-items:center; gap:8px; margin-top:6px }
+.cart-item__qty button{ width:24px; height:24px; border-radius:9999px; border:1px solid var(--b-line); background: var(--b-btn-bg) }
+.cart__summary{ border:1px solid var(--b-line); padding:12px; border-radius:8px; position:sticky; top:16px; height:fit-content }
+.cart__summary-line{ display:flex; justify-content:space-between; margin:6px 0 }
+.cart--empty{ text-align:center; padding:24px }
+
+@media(min-width: 960px){
+  .cart{ grid-template-columns: 2fr 1fr; gap:24px }
+}

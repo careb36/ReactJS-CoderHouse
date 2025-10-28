@@ -1,0 +1,8 @@
+.item-count{ display:inline-flex; align-items:center; gap:8px; flex-wrap:wrap }
+.item-count__btn{ width:32px; height:32px; border-radius:6px; background:var(--b-btn-bg); color:var(--b-btn-txt); border:1px solid var(--b-line) }
+.item-count__btn:disabled{ opacity:.5 }
+.item-count__value{ min-width:2ch; text-align:center }
+.item-count__add{ background:var(--b-link); color:#fff; border:none; border-radius:6px; padding:6px 10px }
+.item-count__add:disabled{ opacity:.6 }
+.item-count__btn:focus-visible, .item-count__add:focus-visible{ outline:2px solid var(--b-focus); outline-offset:2px }
+.item-count__hint{ margin-left:8px; opacity:.75 }

@@ -1,0 +1,130 @@
+.newsletter {
+  background: linear-gradient(135deg, rgba(212, 108, 17, 0.15) 0%, rgba(59, 66, 82, 0.3) 100%);
+  padding: 4rem 1rem;
+  margin: 3rem 0;
+}
+
+.newsletter__container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.newsletter__content {
+  text-align: center;
+}
+
+.newsletter__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--b-txt, #eceff4);
+  margin-bottom: 0.75rem;
+}
+
+.newsletter__description {
+  font-size: 1rem;
+  color: rgba(236, 239, 244, 0.8);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.newsletter__form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.newsletter__input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.875rem 1.25rem;
+  background-color: rgba(59, 66, 82, 0.6);
+  border: 1px solid rgba(212, 108, 17, 0.4);
+  border-radius: 0.5rem;
+  color: var(--b-txt, #eceff4);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.newsletter__input::placeholder {
+  color: rgba(236, 239, 244, 0.5);
+}
+
+.newsletter__input:focus {
+  outline: none;
+  border-color: #d46c11;
+  background-color: rgba(59, 66, 82, 0.8);
+  box-shadow: 0 0 0 3px rgba(212, 108, 17, 0.2);
+}
+
+.newsletter__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.newsletter__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background-color: #d46c11;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.newsletter__button:hover:not(:disabled) {
+  background-color: #bf5f0f;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(212, 108, 17, 0.4);
+}
+
+.newsletter__button:disabled {
+  background-color: rgba(163, 190, 140, 0.8);
+  cursor: default;
+}
+
+.newsletter__success {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(163, 190, 140, 0.2);
+  border: 1px solid rgba(163, 190, 140, 0.5);
+  border-radius: 0.5rem;
+  color: rgba(163, 190, 140, 1);
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .newsletter {
+    padding: 3rem 1rem;
+  }
+
+  .newsletter__form {
+    flex-direction: column;
+  }
+
+  .newsletter__input,
+  .newsletter__button {
+    width: 100%;
+  }
+}
+

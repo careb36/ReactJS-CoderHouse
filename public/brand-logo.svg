@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Logo Café Especialidad">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4e342e"/>
+      <stop offset="100%" stop-color="#6d4c41"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="url(#bg)"/>
+  <g transform="translate(16,16)" fill="#fff">
+    <path d="M28 24c0-6.627 7.163-12 16-12s16 5.373 16 12-7.163 12-16 12-16-5.373-16-12zm-4 20c0-6.627 8.954-12 20-12s20 5.373 20 12-8.954 12-20 12-20-5.373-20-12z" opacity=".9"/>
+    <path d="M16 56h64v6a10 10 0 0 1-10 10H26a10 10 0 0 1-10-10v-6z" opacity=".95"/>
+    <circle cx="76" cy="36" r="8" fill="#ffe082"/>
+  </g>
+</svg>

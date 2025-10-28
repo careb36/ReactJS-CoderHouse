@@ -6,22 +6,40 @@
 
 .item-detail-title {
   margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
 }
 
 .item-detail-content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
 }
 
 .item-detail-img {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
-  margin-right: 1rem;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .item-detail-info {
-  flex: 1;
+  width: 100%;
+}
+
+@media (min-width: 640px){
+  .item-detail-content{
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .item-detail-img{
+    margin: 0;
+    max-width: 100%;
+  }
 }
 
 .item-detail-description {
@@ -29,9 +47,108 @@
 }
 
 .item-detail-price {
-  margin-bottom: 0.5rem;
+  margin: .5rem 0;
+  font-size: 1.75rem;
+  font-weight: 800;
 }
 
-.item-detail button {
-  margin-top: 0.5rem;
+.item-detail-breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  opacity: .8;
+  margin-bottom: 8px;
+}
+
+.item-detail-attrs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--b-line);
+  border-bottom: 1px solid var(--b-line);
+  margin: 10px 0;
+}
+
+.item-detail-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-detail-attr span {
+  opacity: .75;
+  font-size: .9rem;
+}
+
+.item-detail-cta {
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background: var(--b-link);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.item-detail-reviews {
+  margin-top: 32px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.item-detail-reviews h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--b-line);
+  border-radius: 10px;
+  background: var(--b-bg2, rgba(255,255,255,.03));
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.review-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: #666;
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  color: #d46c11;
 }

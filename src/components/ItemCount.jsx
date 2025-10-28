@@ -1,5 +1,17 @@
 import { useState } from 'react'
+import './ItemCount.css'
 
+/**
+ * ItemCount - Quantity selector component with stock validation.
+ * Features increment/decrement buttons and "Add to Cart" action.
+ * Validates minimum (1) and maximum (stock) values.
+ * 
+ * @param {Object} props
+ * @param {number} props.stock - Maximum available quantity
+ * @param {number} props.initial - Initial count value (default: 1)
+ * @param {Function} props.onAdd - Callback when adding to cart
+ * @returns {JSX.Element} Quantity selector with controls
+ */
 export default function ItemCount({ stock = 0, initial = 1, onAdd }){
   const [count, setCount] = useState(initial)
 
@@ -9,14 +21,14 @@ export default function ItemCount({ stock = 0, initial = 1, onAdd }){
   const disabled = stock <= 0
 
   return (
-    <div style={{ display: 'inline-flex', gap: 8, alignItems: 'center' }}>
-      <button aria-label="Disminuir" onClick={dec} disabled={disabled || count <= 1}>-</button>
-      <span aria-live="polite">{count}</span>
-      <button aria-label="Aumentar" onClick={inc} disabled={disabled || count >= stock}>+</button>
-      <button onClick={() => onAdd?.(count)} disabled={disabled}>
+    <div className="item-count">
+      <button className="item-count__btn" aria-label="Disminuir" onClick={dec} disabled={disabled || count <= 1}>-</button>
+      <span className="item-count__value" aria-live="polite">{count}</span>
+      <button className="item-count__btn" aria-label="Aumentar" onClick={inc} disabled={disabled || count >= stock}>+</button>
+      <button className="item-count__add" onClick={() => onAdd?.(count)} disabled={disabled}>
         Agregar al Carrito
       </button>
-      {disabled && <small style={{ marginLeft: 8 }}>Sin stock</small>}
+      {disabled && <small className="item-count__hint">Sin stock</small>}
     </div>
   )
 }

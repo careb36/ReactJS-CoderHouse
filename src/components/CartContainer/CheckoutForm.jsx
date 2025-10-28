@@ -1,6 +1,7 @@
 import { useState } from "react";
+import './CheckoutForm.css'
 
-export default function FormCheckout( { handleCheckout }){
+export default function CheckoutForm({ handleCheckout }){
   const [formData, setFormData] = useState(
     { username: "", mail: "", mailConfirm: "", phone: "" }
   );
@@ -33,8 +34,8 @@ export default function FormCheckout( { handleCheckout }){
 
   // * Controlled Component / Controlled Form 
   return (
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className="checkout-form" onSubmit={handleSubmit}>
+        <div className="checkout-form__grid">
           <label>Nombre:
             <input 
               onChange={handleInputChange}
@@ -45,7 +46,7 @@ export default function FormCheckout( { handleCheckout }){
               required
             />
           </label>
-          {errors.username && <small role="alert">{errors.username}</small>}
+          {errors.username && <small className="field-error" role="alert">{errors.username}</small>}
 
           <label>Email:
             <input 
@@ -58,7 +59,7 @@ export default function FormCheckout( { handleCheckout }){
               required
             />
           </label>
-          {errors.mail && <small role="alert">{errors.mail}</small>}
+          {errors.mail && <small className="field-error" role="alert">{errors.mail}</small>}
 
           <label>Confirmar Email:
             <input 
@@ -70,7 +71,7 @@ export default function FormCheckout( { handleCheckout }){
               required
             />
           </label>
-          {errors.mailConfirm && <small role="alert">{errors.mailConfirm}</small>}
+          {errors.mailConfirm && <small className="field-error" role="alert">{errors.mailConfirm}</small>}
 
           <label>Teléfono
             <input 
@@ -82,10 +83,12 @@ export default function FormCheckout( { handleCheckout }){
               required
             />
           </label>
-          {errors.phone && <small role="alert">{errors.phone}</small>}
+          {errors.phone && <small className="field-error" role="alert">{errors.phone}</small>}
         </div>
-        <button type="submit">Finalizar compra</button>
-        <button onClick={handleReset} type="button">Reset form</button>
+        <div className="checkout-form__actions">
+          <button type="submit">Finalizar compra</button>
+          <button onClick={handleReset} type="button">Reset form</button>
+        </div>
       </form>
   )
 }
